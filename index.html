@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Tulkas" />
+    <meta
+      name="description"
+      content="Escape Room Complejidad Ciclomática, Métricas de Acoplamiento y Cohesión, Calidad de Diseño en Software"
+    />
+    <title>Pruebas del Software Perdido</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="intro-screen">
+        <h1 class="glitch-text">Las Pruebas del Software Perdido</h1>
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="terminal-buttons">
+              <span class="terminal-button red"></span>
+              <span class="terminal-button yellow"></span>
+              <span class="terminal-button green"></span>
+            </div>
+            <div class="terminal-title">terminal</div>
+          </div>
+          <div class="terminal-content">
+            <p class="typing-effect">
+              > Inicializando sistema...<br />
+              > Cargando entorno virtual...<br />
+              > <span class="error">ERROR: Sistema comprometido</span><br />
+              > <span class="warning">ADVERTENCIA: IA hostil detectada</span
+              ><br /><br />
+              > Eres un programador atrapado en un sistema de inteligencia
+              artificial que ha tomado el control de un software crítico.<br /><br />
+              > La única manera de escapar es resolviendo tres pruebas que
+              evalúan tu conocimiento en:<br />
+              > 1. Complejidad Ciclomática<br />
+              > 2. Acoplamiento y Cohesión<br />
+              > 3. Calidad de Diseño en Software<br /><br />
+              > Si fallas, quedarás atrapado en un bucle infinito de errores de
+              código.<br /><br />
+              > ¿Estás listo para comenzar?<br />
+              > <span class="cursor">_</span>
+            </p>
+          </div>
+        </div>
+        <button id="start-button" class="glow-button">INICIAR ESCAPE</button>
+      </div>
+    </div>
+
+    <!-- Sonidos del juego -->
+    <audio
+      id="typing-sound"
+      src="https://assets.mixkit.co/active_storage/sfx/2357/2357-preview.mp3"
+      preload="auto"
+    ></audio>
+    <audio
+      id="glitch-sound"
+      src="https://assets.mixkit.co/active_storage/sfx/209/209-preview.mp3"
+      preload="auto"
+    ></audio>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Efecto de escritura para los terminales
+        const typingElements = document.querySelectorAll(".typing-effect");
+        typingElements.forEach((element) => {
+          const text = element.innerHTML;
+          element.innerHTML = "";
+
+          let i = 0;
+          const speed = 20; // velocidad de escritura
+
+          function typeWriter() {
+            if (i < text.length) {
+              element.innerHTML += text.charAt(i);
+              i++;
+              setTimeout(typeWriter, speed);
+            }
+          }
+
+          typeWriter();
+        });
+
+        // Reproducir sonido de tecleo al cargar la página
+        const typingSound = document.getElementById("typing-sound");
+        typingSound.volume = 0.3;
+        typingSound
+          .play()
+          .catch((e) => console.log("Error reproduciendo sonido:", e));
+
+        // Efecto glitch aleatorio
+        setInterval(() => {
+          const title = document.querySelector("h1");
+          title.classList.add("glitch-active");
+          setTimeout(() => {
+            title.classList.remove("glitch-active");
+          }, 200);
+
+          // Reproducir sonido de glitch ocasionalmente
+          if (Math.random() > 0.7) {
+            const glitchSound = document.getElementById("glitch-sound");
+            glitchSound.volume = 0.2;
+            glitchSound
+              .play()
+              .catch((e) => console.log("Error reproduciendo sonido:", e));
+          }
+        }, 3000);
+
+        // Botón de inicio
+        const startButton = document.getElementById("start-button");
+        startButton.addEventListener("click", function () {
+          window.location.href = "game.html";
+        });
+      });
+    </script>
+  </body>
+</html>

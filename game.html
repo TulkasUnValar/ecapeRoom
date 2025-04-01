@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Tulkas" />
+    <meta
+      name="description"
+      content="Escape Room Complejidad Ciclomática, Métricas de Acoplamiento y Cohesión, Calidad de Diseño en Software"
+    />
+    <title>Pruebas del Software Perdido - Desafíos</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Overlay para efectos visuales -->
+    <div id="screen-overlay" class="screen-overlay"></div>
+
+    <!-- Selector de dificultad -->
+    <div id="difficulty-selector" class="difficulty-selector">
+      <div class="terminal difficulty-terminal">
+        <div class="terminal-header">
+          <div class="terminal-buttons">
+            <span class="terminal-button red"></span>
+            <span class="terminal-button yellow"></span>
+            <span class="terminal-button green"></span>
+          </div>
+          <div class="terminal-title">configuración</div>
+        </div>
+        <div class="terminal-content">
+          <h2>Selecciona el nivel de dificultad</h2>
+          <p>Elige cómo quieres enfrentarte al sistema:</p>
+          <div class="difficulty-options">
+            <button id="easy-mode" class="difficulty-button">
+              FÁCIL<span>Más tiempo y pistas</span>
+            </button>
+            <button id="normal-mode" class="difficulty-button">
+              NORMAL<span>Experiencia estándar</span>
+            </button>
+            <button id="hard-mode" class="difficulty-button">
+              DIFÍCIL<span>Menos tiempo, más errores</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="game-screen">
+        <div class="header">
+          <h1>Las Pruebas del Software Perdido</h1>
+          <div class="timer-container">
+            <div id="timer" class="timer">Tiempo restante: 60s</div>
+          </div>
+          <div class="progress-container">
+            <div class="progress-bar">
+              <div id="progress" class="progress"></div>
+            </div>
+            <div class="level-indicators">
+              <div class="level-indicator active" id="level-1">1</div>
+              <div class="level-indicator" id="level-2">2</div>
+              <div class="level-indicator" id="level-3">3</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desafío 1: Complejidad Ciclomática -->
+        <div class="challenge active" id="challenge-1">
+          <h2>Prueba 1: Complejidad Ciclomática</h2>
+          <div class="challenge-description">
+            <p>
+              Te encuentras en una habitación con una computadora antigua. En la
+              pantalla aparece un fragmento de código y un mensaje:
+            </p>
+            <p class="message">
+              "Solo aquellos que comprendan los caminos del código podrán abrir
+              la puerta."
+            </p>
+          </div>
+          <div class="code-container">
+            <pre><code>def verificar_acceso(codigo):
+    if codigo == "1234":
+        print("Acceso permitido")
+    else:
+        if len(codigo) < 4:
+            print("Código demasiado corto")
+        else:
+            print("Acceso denegado")</code></pre>
+          </div>
+          <div class="challenge-question">
+            <p>
+              Calcula la complejidad ciclomática del código anterior usando la
+              fórmula:
+            </p>
+            <p class="formula">CC = E - N + 2P</p>
+            <p>Donde:</p>
+            <ul>
+              <li>N (Nodos): Cada bloque de código.</li>
+              <li>E (Aristas): Cada posible transición entre bloques.</li>
+              <li>
+                P (Componentes conectados): Normalmente 1 si hay un solo
+                fragmento de código.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Consola interactiva para el primer desafío -->
+          <div class="console-container">
+            <div class="console-header">
+              <span>Terminal del Sistema</span>
+            </div>
+            <div class="console-output" id="console-output">
+              <div>> Analizando código...</div>
+              <div>> Calculando complejidad ciclomática...</div>
+              <div>> Ingresa el resultado:</div>
+            </div>
+            <div class="console-input-line">
+              <span class="console-prompt">></span>
+              <input
+                type="text"
+                id="console-input"
+                class="console-input"
+                placeholder="Escribe tu respuesta..."
+              />
+            </div>
+            <button id="execute-button" class="console-button">Ejecutar</button>
+          </div>
+
+          <div id="feedback-1" class="feedback"></div>
+
+          <!-- Recursos educativos para Complejidad Ciclomática -->
+          <div class="educational-resources">
+            <h3>Recursos de Aprendizaje</h3>
+            <div class="resources-container">
+              <div class="resource-links">
+                <a
+                  href="https://www.youtube.com/watch?v=iILl-n57IEs&ab_channel=JuanV.Carrillo%28jvprofe%29"
+                  target="_blank"
+                  class="resource-link"
+                >
+                  <i class="resource-icon video-icon"></i>
+                  Ver video explicativo sobre Complejidad Ciclomática
+                </a>
+                <a
+                  href="https://www.geeksforgeeks.org/cyclomatic-complexity/"
+                  target="_blank"
+                  class="resource-link"
+                >
+                  <i class="resource-icon article-icon"></i>
+                  Leer artículo detallado
+                </a>
+              </div>
+              <div class="qr-container">
+                <div class="qr-code">
+                  <img
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.youtube.com/watch?v=0cCYQc5M3KY"
+                    alt="QR Code para video de Complejidad Ciclomática"
+                  />
+                  <p>Video</p>
+                </div>
+                <div class="qr-code">
+                  <img
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.geeksforgeeks.org/cyclomatic-complexity/"
+                    alt="QR Code para artículo de Complejidad Ciclomática"
+                  />
+                  <p>Artículo</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pista para modo fácil -->
+          <div id="hint-1" class="hint-container">
+            <div class="hint-button" onclick="toggleHint(1)">Mostrar Pista</div>
+            <div class="hint-content">
+              <p>
+                Pista: En este código hay 3 caminos posibles de ejecución.
+                Recuerda que la complejidad ciclomática es el número de
+                decisiones + 1.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desafío 2: Acoplamiento y Cohesión -->
+        <div class="challenge" id="challenge-2">
+          <h2>Prueba 2: Acoplamiento y Cohesión</h2>
+          <div class="challenge-description">
+            <p>
+              Has cruzado la puerta, pero el sistema de la IA está corrupto y el
+              código fuente del software está fragmentado. La IA dice:
+            </p>
+            <p class="message">
+              "Las dependencias lo controlan todo. Encuentra la clase más frágil
+              para continuar."
+            </p>
+          </div>
+          <div class="code-container">
+            <pre><code>class Usuario:
+    def __init__(self, nombre):
+        self.nombre = nombre
+        self.notificador = Notificador()
+
+    def enviar_mensaje(self, mensaje):
+        self.notificador.enviar(mensaje)
+
+class Notificador:
+    def enviar(self, mensaje):
+        print("Enviando mensaje:", mensaje)</code></pre>
+          </div>
+          <div class="challenge-question">
+            <p>
+              Identifica cuál tiene el peor acoplamiento y justifica por qué:
+            </p>
+          </div>
+          <div class="options-container">
+            <div class="option">
+              <input type="radio" id="option-2-1" name="answer-2" value="1" />
+              <label for="option-2-1"
+                >Usuario tiene alto acoplamiento porque depende directamente de
+                Notificador.</label
+              >
+            </div>
+            <div class="option">
+              <input type="radio" id="option-2-2" name="answer-2" value="2" />
+              <label for="option-2-2"
+                >Notificador tiene bajo acoplamiento, ya que solo tiene una
+                función sencilla.</label
+              >
+            </div>
+            <div class="option">
+              <input type="radio" id="option-2-3" name="answer-2" value="3" />
+              <label for="option-2-3"
+                >Ambas clases están bien diseñadas y no necesitan
+                cambios.</label
+              >
+            </div>
+          </div>
+          <div class="answer-container">
+            <button id="check-2" class="check-button">Verificar</button>
+          </div>
+          <div id="feedback-2" class="feedback"></div>
+
+          <!-- Recursos educativos para Acoplamiento y Cohesión -->
+          <div class="educational-resources">
+            <h3>Recursos de Aprendizaje</h3>
+            <div class="resources-container">
+              <div class="resource-links">
+                <a
+                  href="https://www.youtube.com/watch?v=okL_O0jpQYQ&ab_channel=JhonnatanFlores"
+                  target="_blank"
+                  class="resource-link"
+                >
+                  <i class="resource-icon video-icon"></i>
+                  Ver video sobre Acoplamiento y Cohesión
+                </a>
+                <a
+                  href="https://www.geeksforgeeks.org/software-engineering-coupling-and-cohesion/"
+                  target="_blank"
+                  class="resource-link"
+                >
+                  <i class="resource-icon article-icon"></i>
+                  Leer artículo detallado
+                </a>
+              </div>
+              <div class="qr-container">
+                <div class="qr-code">
+                  <img
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.youtube.com/watch?v=Gn4pn7ijx3o"
+                    alt="QR Code para video de Acoplamiento y Cohesión"
+                  />
+                  <p>Video</p>
+                </div>
+                <div class="qr-code">
+                  <img
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.geeksforgeeks.org/software-engineering-coupling-and-cohesion/"
+                    alt="QR Code para artículo de Acoplamiento y Cohesión"
+                  />
+                  <p>Artículo</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pista para modo fácil -->
+          <div id="hint-2" class="hint-container">
+            <div class="hint-button" onclick="toggleHint(2)">Mostrar Pista</div>
+            <div class="hint-content">
+              <p>
+                Pista: Fíjate en qué clase crea directamente una instancia de la
+                otra. Esa dependencia directa genera un alto acoplamiento.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desafío 3: Calidad de Diseño en Software -->
+        <div class="challenge" id="challenge-3">
+          <h2>Prueba 3: Calidad de Diseño en Software</h2>
+          <div class="challenge-description">
+            <p>
+              Finalmente, llegas al núcleo del sistema, pero el código está
+              desordenado y poco eficiente. Un mensaje aparece en la pantalla:
+            </p>
+            <p class="message">
+              "Demuestra tu habilidad para mejorar el diseño del software o
+              quedarás atrapado en el caos del código."
+            </p>
+          </div>
+          <div class="code-container">
+            <pre><code>class Procesador:
+    def procesar_datos(self, datos):
+        print("Procesando datos")
+    
+    def convertir_datos(self, datos):
+        print("Convirtiendo datos")
+    
+    def enviar_datos(self, datos):
+        print("Enviando datos")</code></pre>
+          </div>
+          <div class="challenge-question">
+            <p>
+              Identifica la métrica de calidad más afectada en el código
+              anterior:
+            </p>
+          </div>
+          <div class="options-container">
+            <div class="option">
+              <input type="radio" id="option-3-1" name="answer-3" value="1" />
+              <label for="option-3-1"
+                >Alta cohesión porque todas las funciones están relacionadas con
+                datos.</label
+              >
+            </div>
+            <div class="option">
+              <input type="radio" id="option-3-2" name="answer-3" value="2" />
+              <label for="option-3-2"
+                >Baja cohesión porque la clase hace demasiadas cosas
+                diferentes.</label
+              >
+            </div>
+            <div class="option">
+              <input type="radio" id="option-3-3" name="answer-3" value="3" />
+              <label for="option-3-3"
+                >Bajo acoplamiento porque no depende de otras clases.</label
+              >
+            </div>
+          </div>
+          <div class="answer-container">
+            <button id="check-3" class="check-button">Verificar</button>
+          </div>
+          <div id="feedback-3" class="feedback"></div>
+
+          <!-- Recursos educativos para Calidad de Diseño en Software -->
+          <div class="educational-resources">
+            <h3>Recursos de Aprendizaje</h3>
+            <div class="resources-container">
+              <div class="resource-links">
+                <a
+                  href=https://www.youtube.com/watch?v=m0MCXkrPU1g&ab_channel=EmmanuelVazquez"
+                  target="_blank"
+                  class="resource-link"
+                >
+                  <i class="resource-icon video-icon"></i>
+                  Ver video sobre Calidad de Diseño en Software
+                </a>
+                <a
+                  href="https://www.geeksforgeeks.org/measuring-software-quality-using-quality-metrics/?ref=gcse_outind"
+                  target="_blank"
+                  class="resource-link"
+                >
+                  <i class="resource-icon article-icon"></i>
+                  Leer artículo detallado
+                </a>
+              </div>
+              <div class="qr-container">
+                <div class="qr-code">
+                  <img
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.youtube.com/watch?v=XmUz5WJmJVU"
+                    alt="QR Code para video de Calidad de Diseño en Software"
+                  />
+                  <p>Video</p>
+                </div>
+                <div class="qr-code">
+                  <img
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.geeksforgeeks.org/software-engineering-software-design-principles/"
+                    alt="QR Code para artículo de Calidad de Diseño en Software"
+                  />
+                  <p>Artículo</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pista para modo fácil -->
+          <div id="hint-3" class="hint-container">
+            <div class="hint-button" onclick="toggleHint(3)">Mostrar Pista</div>
+            <div class="hint-content">
+              <p>
+                Pista: La cohesión se refiere a qué tan relacionadas están las
+                responsabilidades dentro de una clase. ¿Las funciones de esta
+                clase tienen un propósito común o hacen cosas muy diferentes?
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pantalla de Victoria -->
+        <div class="victory-screen" id="victory-screen">
+          <h2 class="glitch-text">¡ESCAPE EXITOSO!</h2>
+          <div class="terminal victory-terminal">
+            <div class="terminal-header">
+              <div class="terminal-buttons">
+                <span class="terminal-button red"></span>
+                <span class="terminal-button yellow"></span>
+                <span class="terminal-button green"></span>
+              </div>
+              <div class="terminal-title">sistema</div>
+            </div>
+            <div class="terminal-content">
+              <p class="typing-effect">
+                > Reiniciando sistema...<br />
+                > Restaurando control...<br />
+                > <span class="success">ÉXITO: Control recuperado</span
+                ><br /><br />
+                > Felicidades, programador. Has demostrado tu dominio de las
+                métricas de software y has escapado con éxito.<br /><br />
+                > El conocimiento es la clave para escribir software de
+                calidad.<br /><br />
+                > <span class="cursor">_</span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Código secreto para final alternativo -->
+          <div class="secret-ending">
+            <p>¿Descubriste el código secreto?</p>
+            <div class="secret-code-container">
+              <input
+                type="text"
+                id="secret-code"
+                placeholder="Ingresa el código secreto..."
+              />
+              <button id="verify-code" class="check-button">Verificar</button>
+            </div>
+          </div>
+
+          <button id="restart-button" class="glow-button">
+            REINICIAR JUEGO
+          </button>
+        </div>
+
+        <!-- Pantalla de Derrota -->
+        <div class="defeat-screen" id="defeat-screen">
+          <h2 class="glitch-text">SISTEMA COMPROMETIDO</h2>
+          <div class="terminal defeat-terminal">
+            <div class="terminal-header">
+              <div class="terminal-buttons">
+                <span class="terminal-button red"></span>
+                <span class="terminal-button yellow"></span>
+                <span class="terminal-button green"></span>
+              </div>
+              <div class="terminal-title">error</div>
+            </div>
+            <div class="terminal-content">
+              <p class="typing-effect error-text">
+                > Error crítico detectado...<br />
+                > Demasiados intentos fallidos...<br />
+                >
+                <span class="error"
+                  >ADVERTENCIA: Control del sistema comprometido</span
+                ><br /><br />
+                > La IA ha tomado el control de tu sistema.<br /><br />
+                > Tienes una última oportunidad...<br /><br />
+                > <span class="cursor">_</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="choice-buttons">
+            <button id="surrender-button" class="choice-button">
+              Aceptar el control de la IA
+            </button>
+            <button id="fight-button" class="choice-button">
+              Seguir luchando
+            </button>
+          </div>
+        </div>
+
+        <!-- Final Secreto -->
+        <div class="secret-screen" id="secret-screen">
+          <h2 class="secret-title">CÓDIGO MAESTRO DESBLOQUEADO</h2>
+          <div class="terminal secret-terminal">
+            <div class="terminal-header">
+              <div class="terminal-buttons">
+                <span class="terminal-button red"></span>
+                <span class="terminal-button yellow"></span>
+                <span class="terminal-button green"></span>
+              </div>
+              <div class="terminal-title">acceso-privilegiado</div>
+            </div>
+            <div class="terminal-content">
+              <p class="typing-effect">
+                > Acceso de nivel maestro concedido...<br />
+                > Desbloqueando todos los sistemas...<br />
+                >
+                <span class="success"
+                  >ÉXITO: Privilegios de administrador otorgados</span
+                ><br /><br />
+                > Has descubierto el código maestro y ahora tienes control total
+                sobre el sistema.<br /><br />
+                > Eres un verdadero maestro del código. La IA ahora está bajo tu
+                control.<br /><br />
+                > <span class="cursor">_</span>
+              </p>
+            </div>
+          </div>
+          <button id="restart-from-secret" class="glow-button">
+            VOLVER A EMPEZAR
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sonidos del juego -->
+    <audio
+      id="correct-sound"
+      src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3"
+      preload="auto"
+    ></audio>
+    <audio
+      id="error-sound"
+      src="https://assets.mixkit.co/active_storage/sfx/2872/2872-preview.mp3"
+      preload="auto"
+    ></audio>
+    <audio
+      id="victory-sound"
+      src="https://assets.mixkit.co/active_storage/sfx/1435/1435-preview.mp3"
+      preload="auto"
+    ></audio>
+    <audio
+      id="tick-sound"
+      src="https://assets.mixkit.co/active_storage/sfx/2859/2859-preview.mp3"
+      preload="auto"
+    ></audio>
+    <audio
+      id="warning-sound"
+      src="https://assets.mixkit.co/active_storage/sfx/2867/2867-preview.mp3"
+      preload="auto"
+    ></audio>
+    <audio
+      id="typing-sound"
+      src="https://assets.mixkit.co/active_storage/sfx/2357/2357-preview.mp3"
+      preload="auto"
+    ></audio>
+    <audio
+      id="glitch-sound"
+      src="https://assets.mixkit.co/active_storage/sfx/209/209-preview.mp3"
+      preload="auto"
+    ></audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>
