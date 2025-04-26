@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let timerInterval;
   let tiempoRestante = 60;
   let difficulty = "normal"; // Valores posibles: "easy", "normal", "hard"
-  const secretCode = "LIBERTAD2025";
+  const secretCode = "LIBERTAD";
   let perfectRun = true; // Para el final secreto
 
   // Configuración según dificultad
